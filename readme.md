@@ -8,7 +8,7 @@ In Genetic and Evolutionary Computation Conference (GECCO '25), July 14-18, 2025
 ## Preparation
 This code is tested with Python 3.12.7, PyTorch 2.5.1, and CUDA 12.7. 
 
-- Download datasets (CIFAR-10, CIFAR-100, ImageNet-16-120) from https://drive.google.com/drive/folders/1T3UIyZXUhMmIuJLOBMIYKAsJknAtrrO4 and put them in `./datasets`
+- Download datasets (CIFAR-10, CIFAR-100, ImageNet-16-120) from https://drive.google.com/drive/folders/1T3UIyZXUhMmIuJLOBMIYKAsJknAtrrO4 and put them in `./data`
 - Download benchmark datasets and put them in `./APIs`
     - NATS-Bench-TSS (NAS-Bench-201): https://drive.google.com/file/d/16Y0UwGisiouVRxW-W5hEtbxmcHw_0hF_/view
     - NATS-Bench-SSS: https://drive.google.com/file/d/1scOMTUwcQhAMa_IMedp9lTzwmgqHLGgA/view

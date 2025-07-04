@@ -15,7 +15,7 @@ tasks = ['nasbench201_cifar10', 'nasbench201_cifar100', 'nasbench201_ImageNet16-
          'nasbenchsss_cifar100','nasbenchsss_ImageNet16-120','nds_darts', 'nds_enas', 'nds_pnas', 'nds_nasnet', 'nds_amoeba']
 
 parser = argparse.ArgumentParser(description='ECP')
-parser.add_argument('--data_loc', default='./datasets', type=str, help='dataset folder')
+parser.add_argument('--data_loc', default='./data', type=str, help='dataset folder')
 parser.add_argument('--api_loc', type=str, default='./APIs', help='path to API')
 parser.add_argument('--save_loc', default='./results', type=str, help='folder to save results')
 parser.add_argument('--save_string', default='ECP', type=str, help='prefix of results file')
@@ -178,19 +178,19 @@ def configuration_setup(task_, istrain):
         args.ptype = ptype
         args.dataset = dset
         if args.dataset == 'cifar10':
-            args.data_loc = './datasets/CIFAR10_data/'
+            args.data_loc = './data/CIFAR10_data/'
             if istrain:
                 args.acc_type = 'x-valid'
             else:
                 args.acc_type = 'ori-test'
         elif args.dataset == 'cifar100':
-            args.data_loc = './datasets/CIFAR100_data/'
+            args.data_loc = './data/CIFAR100_data/'
             if istrain:
                 args.acc_type = 'x-valid'
             else:
                 args.acc_type = 'x-test'
         else:
-            args.data_loc = './datasets/ImageNet16/'
+            args.data_loc = './data/ImageNet16/'
             if istrain:
                 args.acc_type = 'x-valid'
             else:
@@ -198,7 +198,7 @@ def configuration_setup(task_, istrain):
     else:
         args.ptype = task_
         args.dataset = 'cifar10'
-        args.data_loc = './datasets/CIFAR10_data/'
+        args.data_loc = './data/CIFAR10_data/'
         if istrain:
             args.acc_type = 'x-valid'
         else:
@@ -212,8 +212,8 @@ def performance_test(indi):
     for task in tasks:
         configuration_setup(task, False)
         if task.__contains__('nasbench'):
-            if os.path.isfile('./performance_set_%d_%d.pkl' % (args.batch_size, args.seed)):
-                with open('./performance_set_%d_%d.pkl' % (args.batch_size, args.seed), 'rb') as f:
+            if os.path.isfile('./performance_sets/performance_set_%d_%d.pkl' % (args.batch_size, args.seed)):
+                with open('./performance_sets/performance_set_%d_%d.pkl' % (args.batch_size, args.seed), 'rb') as f:
                     performance_set = pickle.load(f)
                 [scores_NASWOT, scores_MeCo, scores_ZiCo, scores_SSNIP, scores_flops, val_accs, test_accs] = performance_set[task]
             else:
@@ -224,8 +224,8 @@ def performance_test(indi):
                 scores_NASWOT, scores_MeCo, scores_ZiCo, scores_SSNIP, scores_flops, test_accs = score_calc_full(inputs_, targets_, args)
 
         else:
-            if os.path.isfile('./performance_set_%d_%d.pkl'%(args.batch_size, args.seed)) and init_ptype.__contains__('nasbench'):
-                with open('./performance_set_%d_%d.pkl'%(args.batch_size, args.seed), 'rb') as f:
+            if os.path.isfile('./performance_sets/performance_set_%d_%d.pkl'%(args.batch_size, args.seed)) and init_ptype.__contains__('nasbench'):
+                with open('./performance_sets/performance_set_%d_%d.pkl'%(args.batch_size, args.seed), 'rb') as f:
                     performance_set = pickle.load(f)
                 [scores_NASWOT, scores_MeCo, scores_ZiCo, scores_SSNIP, scores_flops, val_accs, test_accs] = performance_set[task]
             else:
@@ -337,13 +337,13 @@ if __name__ == '__main__':
     savedataset = args.dataset
 
     if args.dataset == 'cifar10':
-        args.data_loc = './datasets/CIFAR10_data/'
+        args.data_loc = './data/CIFAR10_data/'
         args.acc_type = 'x-valid'
     elif args.dataset == 'cifar100':
-        args.data_loc = './datasets/CIFAR100_data/'
+        args.data_loc = './data/CIFAR100_data/'
         args.acc_type = 'x-valid'
     else:
-        args.data_loc = './datasets/ImageNet16/'
+        args.data_loc = './data/ImageNet16/'
         args.acc_type = 'x-valid'
     init_ptype = copy.deepcopy(args.ptype)
     init_dataset = copy.deepcopy(args.dataset)
