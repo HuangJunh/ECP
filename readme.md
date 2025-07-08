@@ -23,7 +23,7 @@ If you use this code in your research, please cite the following paper:
 ```bibtex
 @inproceedings{ECP,
   title={Evolving Comprehensive Proxies for Zero-Shot Neural Architecture Search},
-  author={Huang, Junhao and Xue, Bing and Sun, Yanan and Zhang, Mengjie and Yen, Gary G.},
+  author={Huang, Junhao and Xue, Bing and Sun, Yanan and Zhang, Mengjie},
   booktitle={Proceedings of the Genetic and Evolutionary Computation Conference},
   pages={1246--1254},
   year={2025}
