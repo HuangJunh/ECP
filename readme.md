@@ -4,6 +4,7 @@ In Genetic and Evolutionary Computation Conference (GECCO '25), July 14-18, 2025
 
 📑 [Read the Paper](https://dl.acm.org/doi/10.1145/3712256.3726315)
 
+<mark>This paper was nominated for the best paper award at the Neuroevolution track of GECCO 2025.</mark>
 
 ## Preparation
 This code is tested with Python 3.12.7, PyTorch 2.5.1, and CUDA 12.7. 
